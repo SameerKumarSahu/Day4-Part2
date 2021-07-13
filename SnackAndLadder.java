@@ -9,10 +9,12 @@ public class SnackAndLadder {
 
 		int playerPosition = 0;
 		int winningPosition = 100;
+		int diceRolls =0;
 		System.out.println("player starting position = " +playerPosition);
 
 			while (playerPosition <= winningPosition) {
 				int diceRoll=(int) (Math.random()*(6)+1);
+				diceRolls++;
 				System.out.println("Dice roll : " +diceRoll);
 
 
@@ -65,5 +67,7 @@ public class SnackAndLadder {
 				}
 						System.out.println("player position : " +playerPosition);
 	}
+						System.out.println("Number of times dice is  rolled to win the game is "+diceRolls);
 }
+
 }
