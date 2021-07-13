@@ -1,34 +1,67 @@
-import java.util.Random;
 
 public class SnackAndLadder {
 
-	public static void main(String[] args) {
+	public static final int NO_PLAY = 0;
+	public static final int LADDER = 1;
+	public static final int SNAKE = 2;
 
-		Random num = new Random();
-		int dice = 1 + num.nextInt(6);
+		public static void main(String[] args) {
 
-		System.out.println("Player rolled the dice and get the number is "+dice);
-		int option = 1 + num.nextInt(3);
-		System.out.println("Option is "+ option);
-		int noplayer =1;
-		int ladder =2;
-		int snake = 3;
-		switch (option) {
-		case 1:
-			if (noplayer == option) {
-				System.out.println("There is no Player ");
-				System.out.println(" The Player stay in the same position ");
-			}
-		case 2 :
-			if (ladder== option) {
-				System.out.println("There is a Ladder");
-				System.out.println("The Player moves ahead by "+dice+" number received by the dice");
-			}
-		case 3 :
-			if (snake== option) {
-				System.out.println("There is a Snake");
-				System.out.println("The Player moves behind by "+dice+" number received by the dice");
-			}
-		}
+		int playerPosition = 0;
+		int winningPosition = 100;
+			System.out.println("player start position = " +playerPosition);
+
+			while (playerPosition <= winningPosition)
+			{
+				int diceRoll=(int) (Math.random()*(6)+1);
+				System.out.println("Dice roll : " +diceRoll);
+
+
+				int option = (int)((Math.random()*3));
+				System.out.println("option : " +option);
+
+
+				if (playerPosition + diceRoll == 100)
+				{
+					playerPosition +=diceRoll;
+					System.out.println("player reached the winning position " + playerPosition+"....");
+					break;
+				}
+
+				switch(option)
+				{
+					case NO_PLAY:
+					System.out.println("player stay in the same position");
+					System.out.println("");
+					playerPosition +=0;
+					break;
+
+					case LADDER:
+					playerPosition +=diceRoll;
+					System.out.println("player moves ahead by " +diceRoll);
+					System.out.println("");
+					break;
+
+					case SNAKE:
+						if(playerPosition < diceRoll ) 
+						{
+							System.out.println("player position goes below 0 ");
+							playerPosition=0;
+							System.out.println("So, player position is  set to : " +playerPosition);
+							System.out.println("");
+							break;
+						}
+
+						else {
+							playerPosition -= diceRoll;
+							System.out.println("player moves behind by " +diceRoll);
+							System.out.println("");
+							break;
+							}
+				}
+
+				System.out.println("player position : " +playerPosition);
 	}
+
+}
 }
