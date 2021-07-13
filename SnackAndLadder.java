@@ -1,9 +1,12 @@
+import java.util.Random;
+
 public class SnackAndLadder {
 
 	public static void main(String[] args) {
 
-		int player=0;
-		System.out.println("Snake and Ladder game start with a single player ");
-		System.out.println("Starting Position of the Player is  "+player );
+		Random num = new Random();
+		int dice = 1 + num.nextInt(6);
+
+		System.out.println("Player rolled the dice and get the number is "+dice);
 	}
 }
