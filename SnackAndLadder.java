@@ -7,67 +7,137 @@ public class SnackAndLadder {
 
 	public static void main(String[] args) {
 
-		int playerPosition = 0;
+		int initialPositionP1 = 0;
+		int initialPositionP2 = 0;
 		int winningPosition = 100;
-		int diceRolls =0;
-		System.out.println("player starting position = " +playerPosition);
 
-			while (playerPosition <= winningPosition) {
+		System.out.println("player1 start position = " +initialPositionP1);
+		System.out.println("player2 start position = " +initialPositionP2);
+		System.out.println("");
+
+			while (initialPositionP1 <= winningPosition && initialPositionP2 <= winningPosition)
+			{
+				System.out.println("Player1 Position is " + initialPositionP1);
 				int diceRoll=(int) (Math.random()*(6)+1);
-				diceRolls++;
-				System.out.println("Dice roll : " +diceRoll);
 
+				System.out.println("Player1 Roll the Dice : " +diceRoll);
 
-				int option = (int)((Math.random()*3));
-				System.out.println("option : " +option);
+				int option1 = (int)((Math.random()*3));
+				System.out.println("Player1 got the option : " +option1);
 
-				if(playerPosition + diceRoll > 100 && option==1)
-					{
-					System.out.println("player position goes above the 100");
-					System.out.println("so, player stay in the same position ");
-					continue;
-					}
-				else if (playerPosition + diceRoll == 100 && option==1)
-					{
-					playerPosition +=diceRoll;
-					System.out.println("player reached the winning position " + playerPosition+"....");
-					break;
-					}
-
-				switch(option)
+				if( initialPositionP1+ diceRoll > 100 && option1==1)
 				{
+					System.out.println("player1 position goes above the 100");
+					System.out.println("so, player1 stay in the same position ");
+					System.out.println("");
+					continue;
+				}
+				else if (initialPositionP1 + diceRoll == 100 && option1==1)
+				{
+					initialPositionP1 +=diceRoll;
+					System.out.println("player1 reached the winning position " + initialPositionP1+"....");
+					break;
+				}
+
+				switch(option1)
+				{
+
 					case NO_PLAY:
-						System.out.println("player stay in the same position");
-						System.out.println("");
-						break;
+
+					System.out.println("player1 stay in the same position");
+					System.out.println("");
+					break;
 
 					case LADDER:
-						playerPosition +=diceRoll;
-						System.out.println("player moves ahead by " +diceRoll);
-						System.out.println("");
-						break;
+					initialPositionP1 +=diceRoll;
+					System.out.println("player1 moves ahead by " +diceRoll);
+					System.out.println("Player1 Position is " + initialPositionP1);
+					System.out.println("");
+					break;
 
 					case SNAKE:
-					    if(playerPosition < diceRoll )
-					    {
-					    	System.out.println("player position goes below 0 ");
-					    	playerPosition=0;
-					    	System.out.println("So, player position is  set to : " +playerPosition);
-					    	System.out.println("");
-					    	break;
 
-					     }
-					    else
-					    {
-					    	playerPosition -= diceRoll;
-					    	System.out.println("player moves behind by " +diceRoll);
-					    	System.out.println("");
-					    	break;
-					    }
+						if(initialPositionP1 < diceRoll )
+						{
+							System.out.println("player1 position goes below 0 ");
+							initialPositionP1=0;
+							System.out.println("So, player1 position is  set to : " +initialPositionP1);
+							System.out.println("");
+							break;
+						}
+						else
+						{
+							initialPositionP1-= diceRoll;
+							System.out.println("player1 moves behind by " +diceRoll);
+							System.out.println("Player1 Position is " + initialPositionP1);
+							System.out.println("");
+							break;
+						}
+					}
+
+
+				System.out.println("Player2 Position is " + initialPositionP2);
+				int diceRolls=(int) (Math.random()*(6)+1);
+
+				System.out.println("Player2 roll the Dice  : " +diceRolls);
+				int option2 = (int)((Math.random()*3));
+
+				System.out.println("Player2 got the option : " +option2);
+
+				 if( initialPositionP2+ diceRolls > 100 && option2==1)
+				{
+					System.out.println("player2 position goes above the 100");
+					System.out.println("so, player2 stay in the same position ");
+					System.out.println(" ");
+					continue;
 				}
-						System.out.println("player position : " +playerPosition);
+
+				else if (initialPositionP2 + diceRolls == 100 && option2==1)
+				{
+					initialPositionP2 +=diceRolls;
+					System.out.println("player2 reached the winning position " + initialPositionP2+"....");
+					break;
+
+				}
+
+				switch(option2)
+				{
+
+					case NO_PLAY:
+
+					System.out.println("player2 stay in the same position");
+					System.out.println("");
+					break;
+
+					case LADDER:
+					initialPositionP2 +=diceRolls;
+					System.out.println("player2 moves ahead by " +diceRolls);
+					System.out.println("Player2 Position is " + initialPositionP2);
+					System.out.println("");
+					break;
+
+					case SNAKE:
+
+						if(initialPositionP2 < diceRolls)
+						{
+							System.out.println("player2 position goes below 0 ");
+							initialPositionP2=0;
+							System.out.println("So, player2 position is  set to : " +initialPositionP2);
+							System.out.println("");
+							break;
+						}
+						else
+						{
+						initialPositionP2-= diceRolls;
+						System.out.println("player2 moves behind by " +diceRolls);
+						System.out.println("Player2 Position is " + initialPositionP2);
+						System.out.println("");
+						break;
+						}
+					}
+
+				}
 	}
-						System.out.println("Number of times dice is  rolled to win the game is "+diceRolls);
-}
 
 }
+
